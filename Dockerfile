@@ -5,6 +5,7 @@ ENV ILIBRARIAN_VERSION=4.6_all_xenial \
     ILIBRARIAN_LIBRARY_PATH=/data
 
 VOLUME ${ILIBRARIAN_LIBRARY_PATH}
+EXPOSE 80
 
 RUN apt-get -qy update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qy install wget && \
