@@ -10,7 +10,9 @@ EXPOSE 80
 RUN apt-get -qy update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qy install wget && \
     wget -q https://i-librarian.net/downloads/i-librarian_${ILIBRARIAN_VERSION}.deb && \
-    DEBIAN_FRONTEND=noninteractive apt-get -qy install ./i-librarian_${ILIBRARIAN_VERSION}.deb && \
+    DEBIAN_FRONTEND=noninteractive apt-get -qy install \
+        ./i-librarian_${ILIBRARIAN_VERSION}.deb \
+        php-ldap && \
     rm -f i-librarian_${ILIBRARIAN_VERSION}.deb && \
     rm -rf /var/lib/apt/lists/* && \
     ln -snf /dev/stdout /var/log/apache2/access.log && \
