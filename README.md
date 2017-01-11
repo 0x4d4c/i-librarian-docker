@@ -10,6 +10,7 @@ All configuration is done via environment variables. The [generate-config.sh](sc
 
 | Parameter | Default | Description |
 | --------- | ------- | ----------- |
+| `ILIBRARIAN_UPLOAD_MAX_SIZE` | `"50M"` | Max. upload size. |
 | `ILIBRARIAN_RELATIVE_URL_ROOT` | `"/librarian"` | Relative URL of I, Librarian service. |
 | `ILIBRARIAN_TEMP_PATH` | `""` | Custom temporary storage folder path. |
 | `ILIBRARIAN_STABLELINKS` | `"0"` | Enable (1) or disable (0) unrestricted access to stable item links. |
@@ -75,6 +76,8 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     add_header       Front-End-Https on;
+
+    client_max_body_size 50M;
   }
 }
 ```
