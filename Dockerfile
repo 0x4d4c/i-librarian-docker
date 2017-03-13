@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Martin Lambertz <martin@0x4d4c.xyz>
 
-ENV ILIBRARIAN_VERSION=4.6_all_xenial \
+ENV ILIBRARIAN_VERSION=4.7_all_xenial \
     ILIBRARIAN_LIBRARY_PATH=/data
 
 VOLUME ${ILIBRARIAN_LIBRARY_PATH}
