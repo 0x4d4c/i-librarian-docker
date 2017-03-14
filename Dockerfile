@@ -13,6 +13,11 @@ RUN apt-get -qy update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qy install \
         ./i-librarian_${ILIBRARIAN_VERSION}.deb \
         php-ldap && \
+    a2dissite 000-default && \
+    a2dismod -f autoindex && \
+    sed -i 's/^ServerTokens.*$/ServerTokens Prod/' /etc/apache2/conf-enabled/security.conf && \
+    sed -i 's/^ServerSignature.*$/ServerSignature Off/' /etc/apache2/conf-enabled/security.conf && \
+    rm -f /var/www/html/index.html && \
     rm -f i-librarian_${ILIBRARIAN_VERSION}.deb && \
     rm -rf /var/lib/apt/lists/* && \
     ln -snf /dev/stdout /var/log/apache2/access.log && \
